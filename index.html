@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lifetrace | Emergency Safety</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">L</div>
+            <div>
+                <h2>Lifetrace</h2>
+                <span>Emergency Intelligence</span>
+            </div>
+        </div>
+
+        <div class="system-status">
+            <span class="status-dot"></span>
+            System Online
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-text">
+
+                <span class="badge">
+                    🛡️ PERSONAL SAFETY NETWORK
+                </span>
+
+                <h1>
+                    When everything fails,
+                    <span>Lifetrace stays with you.</span>
+                </h1>
+
+                <p>
+                    Intelligent emergency protection designed to keep
+                    you connected, verified and traceable when normal
+                    communication systems fail.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button class="sos-button" onclick="activateSOS()">
+                        🚨 ACTIVATE SOS
+                    </button>
+
+                    <button class="secondary-button" onclick="checkSafety()">
+                        Check My Safety
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMERGENCY CARD -->
+            <div class="emergency-card">
+
+                <div class="card-header">
+                    <span>EMERGENCY STATUS</span>
+                    <span class="live">● LIVE</span>
+                </div>
+
+                <div class="emergency-circle">
+
+                    <div>
+                        <strong id="safetyScore">98</strong>
+                        <small>Safety Score</small>
+                    </div>
+
+                </div>
+
+                <p id="statusText">
+                    You are currently safe.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATUS CARDS -->
+        <section class="status-grid">
+
+            <div class="status-card">
+
+                <div class="card-icon">📍</div>
+
+                <div>
+                    <span>LOCATION</span>
+                    <h3 id="locationStatus">Available</h3>
+                    <p>GPS signal detected</p>
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <div class="card-icon">📱</div>
+
+                <div>
+                    <span>PHONE</span>
+                    <h3 id="phoneStatus">Online</h3>
+                    <p>Device connected</p>
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <div class="card-icon">🔋</div>
+
+                <div>
+                    <span>BATTERY</span>
+                    <h3 id="batteryStatus">Checking...</h3>
+                    <p>Device power</p>
+                </div>
+
+            </div>
+
+
+            <div class="status-card">
+
+                <div class="card-icon">📡</div>
+
+                <div>
+                    <span>NETWORK</span>
+                    <h3 id="networkStatus">Online</h3>
+                    <p>Communication active</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TWO COLUMN AREA -->
+        <section class="dashboard-grid">
+
+
+            <!-- MAP -->
+            <div class="panel map-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <span class="section-label">LIVE LOCATION</span>
+                        <h2>Emergency Map</h2>
+                    </div>
+
+                    <button onclick="locateUser()">
+                        📍 Locate Me
+                    </button>
+
+                </div>
+
+                <div class="map">
+
+                    <div class="map-grid"></div>
+
+                    <div class="map-marker">
+                        <span></span>
+                        YOU
+                    </div>
+
+                    <div class="map-point point-one">🏥</div>
+                    <div class="map-point point-two">🚔</div>
+                    <div class="map-point point-three">🏠</div>
+
+                    <div class="map-message">
+                        Your location is protected
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI ASSISTANT -->
+            <div class="panel ai-panel">
+
+                <div class="ai-header">
+
+                    <div class="ai-icon">✦</div>
+
+                    <div>
+                        <span class="section-label">AI ASSISTANT</span>
+                        <h2>Lifetrace AI</h2>
+                    </div>
+
+                </div>
+
+                <div class="ai-message">
+
+                    <p>
+                        Hello. I'm monitoring your safety signals.
+                    </p>
+
+                    <p>
+                        If something goes wrong, I'll help you choose
+                        the safest available action.
+                    </p>
+
+                </div>
+
+                <div class="quick-actions">
+
+                    <button onclick="askAI('I am in danger')">
+                        🚨 I'm in danger
+                    </button>
+
+                    <button onclick="askAI('There is a flood')">
+                        🌊 Flood
+                    </button>
+
+                    <button onclick="askAI('There is an earthquake')">
+                        🌍 Earthquake
+                    </button>
+
+                    <button onclick="askAI('My phone is offline')">
+                        📱 Phone offline
+                    </button>
+
+                </div>
+
+                <div class="ai-response" id="aiResponse">
+                    Select an emergency situation above.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VERIFICATION -->
+        <section class="panel verification">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-label">TRI-LAYER VERIFICATION</span>
+                    <h2>Multiple signals reduce false alarms</h2>
+                </div>
+
+                <span class="verified">
+                    ✓ VERIFIED
+                </span>
+
+            </div>
+
+
+            <div class="verification-grid">
+
+                <div class="verification-card">
+
+                    <div class="verification-icon">
+                        ❤️
+                    </div>
+
+                    <h3>Passive Biometrics</h3>
+
+                    <p>
+                        Heart rate and motion signals
+                    </p>
+
+                </div>
+
+
+                <div class="verification-card">
+
+                    <div class="verification-icon">
+                        🧠
+                    </div>
+
+                    <h3>Behavioral Signals</h3>
+
+                    <p>
+                        Movement and routine detection
+                    </p>
+
+                </div>
+
+
+                <div class="verification-card">
+
+                    <div class="verification-icon">
+                        📍
+                    </div>
+
+                    <h3>Environmental Signals</h3>
+
+                    <p>
+                        Location and emergency conditions
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACTS -->
+        <section class="panel contacts">
+
+            <div class="panel-header">
+
+                <div>
+                    <span class="section-label">EMERGENCY NETWORK</span>
+                    <h2>Trusted Contacts</h2>
+                </div>
+
+                <button onclick="addContact()">
+                    + Add Contact
+                </button>
+
+            </div>
+
+            <div id="contactsList">
+
+                <div class="contact">
+                    <div class="contact-avatar">👤</div>
+
+                    <div>
+                        <h3>Emergency Contact</h3>
+                        <p>Primary trusted person</p>
+                    </div>
+
+                    <span class="contact-status">
+                        Connected
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- SOS MODAL -->
+    <div class="modal" id="sosModal">
+
+        <div class="modal-box">
+
+            <div class="warning-icon">🚨</div>
+
+            <h2>SOS Activated</h2>
+
+            <p>
+                Lifetrace is preparing your emergency alert.
+            </p>
+
+            <div class="alert-status">
+                <span></span>
+                Verifying emergency signals...
+            </div>
+
+            <button onclick="closeSOS()">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            Lifetrace © 2026 · Emergency intelligence for critical moments
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
